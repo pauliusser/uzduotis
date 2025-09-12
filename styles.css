@@ -1,5 +1,80 @@
 body {
   font-family: "aktiv-grotesk", sans-serif;
+  margin: 0;
 }
 
 /* font-family: "aktiv-grotesk-thin",sans-serif; */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.header-wrapper {
+  background-color: rgb(32, 32, 32);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+}
+.logo-and-buy {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.logo-header {
+  height: 37px;
+  cursor: pointer;
+}
+.buy-element {
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  color: #97ac9f;
+  font-weight: 900;
+  border: 1px solid #97ac9f;
+}
+.buy-element:hover {
+  color: yellow;
+  border: 1px solid yellow;
+  transition: 0.3s;
+}
+.language {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  color: #97ac9f;
+  cursor: pointer;
+  fill: none;
+}
+
+.language-and-burger-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.globe-icon circle,
+.globe-icon ellipse,
+.globe-icon line {
+  stroke: #97ac9f;
+}
+.language:hover .globe-icon circle,
+.language:hover .globe-icon ellipse,
+.language:hover .globe-icon line,
+.language:hover span {
+  stroke: yellow;
+  color: yellow;
+  transition: 0.3s;
+}
+
+.burger-btn line {
+  stroke: #97ac9f;
+}
+.burger-btn:hover line {
+  stroke: yellow;
+  transition: 0.3s;
+}
