@@ -11,10 +11,12 @@
     <header>
       <div class="header-wrapper">
         <div class="logo-and-buy">
-          <img
-            class="logo-header"
-            src="/images/AW2_Logo_Horizontal_GREEN_R-1920x399.png"
-            alt="Alan Wake II Logo" />
+          <a href="#">
+            <img
+              class="logo-header"
+              src="/images/AW2_Logo_Horizontal_GREEN_R-1920x399.png"
+              alt="Alan Wake II Logo" />
+          </a>
           <div class="buy-element">
             <a href="#">BUY NOW</a>
           </div>
@@ -28,19 +30,19 @@
               viewBox="-10 -10 57 57"
               xmlns="http://www.w3.org/2000/svg">
               <circle cx="18.5" cy="18.5" r="17.5" stroke="currentColor" stroke-width="2" />
-              <ellipse
-                cx="18.5"
-                cy="18.5"
-                rx="10"
-                ry="17.5"
-                stroke="currentColor"
-                stroke-width="2" />
+              <ellipse cx="18.5" cy="18.5" rx="10" ry="17.5" stroke="currentColor" stroke-width="2" />
               <line x1="1" y1="18.5" x2="36" y2="18.5" stroke="currentColor" stroke-width="2" />
               <line x1="3" y1="10" x2="34" y2="10" stroke="currentColor" stroke-width="2" />
               <line x1="3" y1="27" x2="34" y2="27" stroke="currentColor" stroke-width="2" />
               <line x1="18.5" y1="1" x2="18.5" y2="36" stroke="currentColor" stroke-width="2" />
             </svg>
             <span>ENGLISH</span>
+            <div class="language-dropdown">
+              <ul>
+                <li><a href="#">ENGLISH</a></li>
+                <li><a href="#">LIETUVIŲ</a></li>
+              </ul>
+            </div>
           </div>
           <svg class="burger-btn" width="37" height="37" viewBox="-10 -10 57 57">
             <line x1="3" y1="10" x2="34" y2="10" stroke="currentColor" stroke-width="2" />
@@ -63,11 +65,31 @@
       </div> -->
     </header>
     <main>
-      <h1>Svetainės replika</h1>
+      <!-- <h1>Svetainės replika</h1>
 
       <h2>užduotis atvaizduoti šios svetainės dizaino analogą:</h2>
-      <a href="https://www.alanwake.com/">Alan Wake II</a>
+      <a href="https://www.alanwake.com/" target="_blank">Alan Wake II</a> -->
+      <section class="hero-section">
+        <div id="hero-image">
+          <h1>ALAN WAKE II</h1>
+        </div>
+        <div id="logo-wrapper">
+          <img
+            id="main-logo"
+            src="/images/AW2_Logo_Horizontal_GREEN_R-2048x426.png"
+            alt="Alan Wake II Logo" />
+        </div>
+      </section>
+      <section class="slogan-section">
+        <h2>DIVE BACK INTO THE DARKNESS</h2>
+        <p>
+          The highly anticipated second expansion for Alan Wake 2, is out now on PC, PlayStation 5 and Xbox
+          Series X|S.
+        </p>
+      </section>
+      <section class="test"></section>
     </main>
     <footer></footer>
   </body>
+  <script type="module" src="main.js"></script>
 </html>

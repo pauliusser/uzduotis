@@ -1,27 +1,38 @@
 body {
   font-family: "aktiv-grotesk", sans-serif;
+  background-color: rgb(31, 31, 31);
+  /* font-family: "aktiv-grotesk-thin",sans-serif; */
+}
+* {
   margin: 0;
 }
-
-/* font-family: "aktiv-grotesk-thin",sans-serif; */
-
 a {
   text-decoration: none;
   color: inherit;
 }
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
 .header-wrapper {
-  background-color: rgb(32, 32, 32);
+  background-color: rgb(32, 32, 32, 0.5);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
+  padding: 15px 50px;
 }
 .logo-and-buy {
   display: flex;
   align-items: center;
   gap: 50px;
 }
+
 .logo-header {
+  display: block;
   height: 37px;
   cursor: pointer;
 }
@@ -45,18 +56,17 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 800;
+  font-weight: 700;
   color: #97ac9f;
   cursor: pointer;
   fill: none;
 }
-
 .language-and-burger-menu {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
+  position: relative;
 }
-
 .globe-icon circle,
 .globe-icon ellipse,
 .globe-icon line {
@@ -70,11 +80,114 @@ a {
   color: yellow;
   transition: 0.3s;
 }
-
+.language:hover .language-dropdown {
+  display: block;
+  transition: 0.3s;
+}
 .burger-btn line {
   stroke: #97ac9f;
 }
 .burger-btn:hover line {
   stroke: yellow;
   transition: 0.3s;
+}
+.language-dropdown {
+  display: none;
+  position: absolute;
+  top: 37px;
+  width: 130px;
+  padding: 20px;
+  background-color: black;
+}
+.language-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.hero-section {
+  height: 100vh;
+  /* background-color: grey; */
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+#hero-image {
+  position: absolute;
+  top: 0;
+  background-color: black;
+  background-image: url("/images/Alan_Wake_2_keyart_for_web3-2560x1318.webp");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-delay: 2s;
+  animation-name: heroImageFadeIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+@keyframes heroImageFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+#logo-wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: aqua; */
+}
+
+#main-logo {
+  width: 880px;
+  max-width: 90%;
+  height: auto;
+  animation-delay: 1s;
+  animation-name: mainLogoFadeIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+@keyframes mainLogoFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+h1 {
+  color: rgba(255, 255, 255, 0);
+  font-size: 1x;
+  position: fixed;
+  top: -100px;
+}
+.slogan-section {
+  width: 100%;
+  background-color: black;
+  color: #97ac9f;
+  padding: 75px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+.slogan-section h2 {
+  font-size: 40px;
+  font-weight: 900;
+}
+.slogan-section p {
+  font-size: 20px;
+  font-weight: 700;
+}
+.test {
+  height: 100vh;
 }
