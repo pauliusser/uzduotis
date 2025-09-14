@@ -132,7 +132,7 @@ header {
   align-items: center;
   animation-delay: 2s;
   animation-name: heroImageFadeIn;
-  animation-duration: 0.5s;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
   opacity: 0;
 }
@@ -292,7 +292,7 @@ h1 {
   cursor: pointer;
   margin-bottom: 1rem;
 }
-.carusel-background {
+#carusel-background {
   background-image: url("/images/Preorder_background.jpg");
   background-size: cover;
   background-position: center;
@@ -301,23 +301,28 @@ h1 {
   flex-direction: column;
   justify-content: center;
   gap: 50px;
-  padding: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 .arrows-container {
-  color: #97ac9f;
+  /* color: #97ac9f; */
   align-self: flex-end;
   display: flex;
   gap: 50px;
+  user-select: none;
+}
+.arrow {
+  cursor: pointer;
 }
 
 /* MARK: karusele */
-.carousel-container {
+#carousel-container {
   --item-size: calc((100vw - 200px) / 3 - 20px);
   display: block;
   /* height: var(--item-size); */
   position: relative;
 }
-.carousel {
+#carousel {
   display: flex;
   gap: 20px;
   transition: left 0.3s ease-in-out;
@@ -341,14 +346,16 @@ h1 {
 .carousel-item:hover img {
   transform: scale(1.05);
 }
-.carousel-indicator {
+#carousel-indicator {
   width: 300px;
   height: 2px;
   background-color: #515854;
   align-self: center;
+  cursor: pointer;
 }
-.carousel-indicator-slider {
+#carousel-indicator-slider {
   width: 180px;
   height: 2px;
   background-color: #97ac9f;
+  transition: margin-left 0.3s ease-in-out;
 }
