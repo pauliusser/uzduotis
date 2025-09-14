@@ -5,10 +5,14 @@ body {
 }
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 a {
   text-decoration: none;
   color: inherit;
+}
+p {
+  line-height: 1.8rem;
 }
 header {
   position: fixed;
@@ -190,4 +194,161 @@ h1 {
 }
 .test {
   height: 100vh;
+}
+.section-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hdtv-aspect-ratio {
+  aspect-ratio: 16/9;
+}
+.cinematic-aspect-ratio {
+  aspect-ratio: 21/9;
+}
+.content-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lake-house-image {
+  width: 100%;
+  background-image: url("/images/AW2_Lakehouse_DLC_trailer_thumbnail_4K-1920x1080.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.play-btn-svg {
+  cursor: pointer;
+  width: 142px;
+  height: 142px;
+  border-radius: 50%;
+}
+.play-btn-svg circle {
+  fill: none;
+  stroke: yellow;
+}
+.play-btn-svg polygon {
+  fill: yellow;
+  transition: transform 0.3s;
+}
+.play-btn-svg:hover polygon {
+  transform: translateX(5px);
+}
+.description-and-image-wrapper {
+  color: #97ac9f;
+  background-color: black;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+}
+.description-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  align-items: flex-start;
+  padding: 65px 50px 65px 50px;
+}
+.description-wrapper h2 {
+  font-size: 2rem;
+  font-weight: 900;
+}
+.description-wrapper button {
+  all: unset;
+  font-size: 1.2rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 50px;
+  color: black;
+  background-color: #97ac9f;
+  margin: 15px 0;
+}
+.image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.CD-box-image {
+  width: 100%;
+  padding: 100px 0;
+}
+.tab {
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.carusel-background {
+  background-image: url("/images/Preorder_background.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+  padding: 100px;
+}
+.arrows-container {
+  color: #97ac9f;
+  align-self: flex-end;
+  display: flex;
+  gap: 50px;
+}
+
+/* MARK: karusele */
+.carousel-container {
+  --item-size: calc((100vw - 200px) / 3 - 20px);
+  display: block;
+  /* height: var(--item-size); */
+  position: relative;
+}
+.carousel {
+  display: flex;
+  gap: 20px;
+  transition: left 0.3s ease-in-out;
+  position: absolute;
+}
+.carousel-item {
+  /* width: var(--item-size); */
+  aspect-ratio: 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.carousel-item:hover img {
+  transform: scale(1.05);
+}
+.carousel-indicator {
+  width: 300px;
+  height: 2px;
+  background-color: #515854;
+  align-self: center;
+}
+.carousel-indicator-slider {
+  width: 180px;
+  height: 2px;
+  background-color: #97ac9f;
 }
