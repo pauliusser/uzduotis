@@ -335,6 +335,7 @@ h1 {
 #carousel {
   display: flex;
   gap: 20px;
+  left: 0px;
   transition: left 0.3s ease-in-out;
   position: absolute;
 }
@@ -367,5 +368,6 @@ h1 {
   width: 180px;
   height: 2px;
   background-color: #97ac9f;
+  margin-left: 0px;
   transition: margin-left 0.3s ease-in-out;
 }
