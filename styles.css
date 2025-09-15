@@ -372,6 +372,7 @@ h1 {
   transition: margin-left 0.3s ease-in-out;
 }
 .characters-descriptions{
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   color:#97ac9f;
@@ -382,10 +383,10 @@ h1 {
   
 }
 .tabs-wrapper{
-  display: flex;
+  display: flex;  
   gap: 50px;
 }
-.character-description{
+.description{
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -402,4 +403,23 @@ h1 {
 }
 .saga-anderson-background{
   background-image: url("./images/Saga_Anderson.jpg");
+}
+.scenes-descriptions{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color:#97ac9f;
+}
+.f-col {
+  flex-direction: column;
+}
+.pacific-nw-background {
+  background-image: url("./images/Bright_Falls.jpg");
+}
+.dark-place-background {
+  background-image: url("./images/Dark_Place-2.jpg");
+}
+.tab-disabled {
+color:#515854;
+text-decoration: none;
 }

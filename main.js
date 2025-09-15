@@ -25,32 +25,68 @@ const descriptionAW = document.getElementById("description-alan-wake");
 const descriptionSA = document.getElementById("description-saga-anderson");
 let isTabAW = true;
 let isTabSA = false;
-const tabAlanStyle = tabAlanWake.style;
-const tabSagaStyle = tabSagaAnderson.style;
+const tabPacificNW = document.getElementById("tab-pacific-nw");
+const tabDarkPlace = document.getElementById("tab-dark-place");
+let isTabPNW = true;
+let isTabDP = false;
+const descriptionPNW = document.getElementById("description-pacific-nw");
+const descriptionDP = document.getElementById("description-dark-place");
+const scenePicture = document.getElementById("scene-picture");
+
+
 
 const tabHandler = () => {
-  isTabAW ? tabAlanStyle.color = "#97ac9f" : tabAlanStyle.color = "#515854";
-  isTabSA ? tabSagaStyle.color = "#97ac9f" : tabSagaStyle.color = "#515854";
+  isTabAW ? tabAlanWake.classList.remove("tab-disabled") : tabAlanWake.classList.add("tab-disabled");
+  isTabSA ? tabSagaAnderson.classList.remove("tab-disabled") : tabSagaAnderson.classList.add("tab-disabled");
+  isTabPNW ? tabPacificNW.classList.remove("tab-disabled") : tabPacificNW.classList.add("tab-disabled");
+  isTabDP ? tabDarkPlace.classList.remove("tab-disabled") : tabDarkPlace.classList.add("tab-disabled");
 
   if(isTabAW){
     characterPicture.classList.add("alan-wake-background")
     characterPicture.classList.remove("saga-anderson-background");
+    descriptionSA.style.display = "none"
+    descriptionAW.style.display = "flex"
   } else if (isTabSA) {
     characterPicture.classList.add("saga-anderson-background")
     characterPicture.classList.remove("alan-wake-background");
+    descriptionAW.style.display = "none"
+    descriptionSA.style.display = "flex"
   }
+
+  if(isTabPNW){
+    scenePicture.classList.add("pacific-nw-background")
+    scenePicture.classList.remove("dark-place-background");
+    descriptionPNW.style.display = "flex"
+    descriptionDP.style.display = "none"
+  } else if (isTabDP) {
+    scenePicture.classList.add("dark-place-background")
+    scenePicture.classList.remove("pacific-nw-background");
+    descriptionDP.style.display = "flex"
+    descriptionPNW.style.display = "none"
+  }
+  
 }
 tabHandler()
 
 tabSagaAnderson.addEventListener("click",()=>{
   console.log("click")
-  isTabAW = false;
   isTabSA = true;
+  isTabAW = false;
   tabHandler()
 })
 tabAlanWake.addEventListener("click",()=>{
   isTabAW = true;
   isTabSA = false;
+  tabHandler()
+})
+tabPacificNW.addEventListener("click",()=>{
+  isTabPNW = true;
+  isTabDP = false;
+  tabHandler()
+})
+tabDarkPlace.addEventListener("click",()=>{
+  isTabDP = true;
+  isTabPNW = false;
   tabHandler()
 })
 
