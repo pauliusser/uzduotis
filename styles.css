@@ -371,3 +371,35 @@ h1 {
   margin-left: 0px;
   transition: margin-left 0.3s ease-in-out;
 }
+.characters-descriptions{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color:#97ac9f;
+}
+.description-wrapper{
+  display: flex;
+  flex-direction: column;
+  
+}
+.tabs-wrapper{
+  display: flex;
+  gap: 50px;
+}
+.character-description{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.character-picture{
+  width: 100%;
+  height: 100%;
+  
+  background-size: cover;
+  background-position: center;
+}
+.alan-wake-background{
+  background-image: url("./images/Alan_Wake-1.jpg");
+}
+.saga-anderson-background{
+  background-image: url("./images/Saga_Anderson.jpg");
+}

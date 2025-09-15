@@ -18,6 +18,41 @@ let padding = window.innerWidth * 0.05;
 carouselBackground.style.paddingLeft = `0 ${padding}px`;
 carouselBackground.style.paddingRight = `0 ${padding}px`;
 carouselIndicatorSlider.style.width = `${(itemsOnScreen / totalItems) * 100}%`;
+const tabAlanWake = document.getElementById("tab-alan-wake");
+const tabSagaAnderson = document.getElementById("tab-saga-anderson");
+const characterPicture = document.getElementById("character-picture");
+const descriptionAW = document.getElementById("description-alan-wake");
+const descriptionSA = document.getElementById("description-saga-anderson");
+let isTabAW = true;
+let isTabSA = false;
+const tabAlanStyle = tabAlanWake.style;
+const tabSagaStyle = tabSagaAnderson.style;
+
+const tabHandler = () => {
+  isTabAW ? tabAlanStyle.color = "#97ac9f" : tabAlanStyle.color = "#515854";
+  isTabSA ? tabSagaStyle.color = "#97ac9f" : tabSagaStyle.color = "#515854";
+
+  if(isTabAW){
+    characterPicture.classList.add("alan-wake-background")
+    characterPicture.classList.remove("saga-anderson-background");
+  } else if (isTabSA) {
+    characterPicture.classList.add("saga-anderson-background")
+    characterPicture.classList.remove("alan-wake-background");
+  }
+}
+tabHandler()
+
+tabSagaAnderson.addEventListener("click",()=>{
+  console.log("click")
+  isTabAW = false;
+  isTabSA = true;
+  tabHandler()
+})
+tabAlanWake.addEventListener("click",()=>{
+  isTabAW = true;
+  isTabSA = false;
+  tabHandler()
+})
 
 const setArrowsColor = () => {
   if (carouselPosition + itemsOnScreen >= totalItems) {
