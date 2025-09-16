@@ -1,5 +1,5 @@
 :root {
-  --var-text-color:#97ac9f;
+  --var-text-color: #97ac9f;
 }
 body {
   font-family: "aktiv-grotesk", sans-serif;
@@ -34,7 +34,7 @@ header {
   align-items: center;
   padding: 15px 50px;
   height: 67px;
-  transition: 0.3s ;
+  transition: 0.3s;
 }
 .logo-and-buy {
   display: flex;
@@ -385,44 +385,46 @@ MARK:carousel
 /* 
 MARK:descriptions
 */
-.characters-descriptions{
+.description-and-image-wrapper {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  color:var(--var-text-color);
+  color: var(--var-text-color);
+  background-color: black;
+  justify-items: center;
 }
-.description-wrapper{
+.to-right {
+  justify-self: end;
+}
+.to-left {
+  justify-self: start;
+}
+.description-wrapper {
   display: flex;
   flex-direction: column;
-  
+  padding: 100px 50px;
 }
-.tabs-wrapper{
-  display: flex;  
+.tabs-wrapper {
+  display: flex;
   gap: 50px;
 }
-.description{
+.description {
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
-.character-picture{
+.character-picture {
   width: 100%;
   height: 100%;
-  
+
   background-size: cover;
   background-position: center;
 }
-.alan-wake-background{
+.alan-wake-background {
   background-image: url("./images/Alan_Wake-1.jpg");
 }
-.saga-anderson-background{
+.saga-anderson-background {
   background-image: url("./images/Saga_Anderson.jpg");
-}
-.scenes-descriptions{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  color:var(--var-text-color);
 }
 .f-col {
   flex-direction: column;
@@ -434,29 +436,33 @@ MARK:descriptions
   background-image: url("./images/Dark_Place-2.jpg");
 }
 .tab-disabled {
-color:#515854;
-text-decoration: none;
+  color: #515854;
+  text-decoration: none;
 }
 /* 
 MARK:cards
 */
-.cards-wrapper{
+.cards-wrapper {
   color: var(--var-text-color);
-width: 100%;
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-gap: 2rem;
-padding: 50px 2rem;
-
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: fit-content;
+  justify-content: center;
+  gap: 2rem;
+  padding: 50px 2rem;
 }
 .card {
-  padding: 2rem;  
+  padding: 2rem;
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: end;
   gap: 3rem;
+  max-width: 425px;
+  height: 500px;
+  overflow: hidden;
 }
 .c1 {
   background-image: url("./images/AWII_Launch_049.png");
@@ -472,7 +478,6 @@ padding: 50px 2rem;
   font-weight: 900;
   line-height: 2.5rem;
   text-transform: capitalize;
-  
 }
 .card p {
   font-size: 1.4rem;
@@ -482,7 +487,7 @@ padding: 50px 2rem;
 /* 
 MARK:contacts
 */
-.contact-wrapper{
+.contact-wrapper {
   color: var(--var-text-color);
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -493,11 +498,11 @@ MARK:contacts
   background-size: cover;
 }
 
-.stay-connected h2{
-font-size: 3rem;
-font-weight: 900;
+.stay-connected h2 {
+  font-size: 3rem;
+  font-weight: 900;
 }
-.stay-connected p{
+.stay-connected p {
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -511,18 +516,18 @@ font-weight: 900;
 }
 .subscription-form input {
   background-color: var(--var-text-color);
-  padding: 1.5rem 1rem ;
+  padding: 1.5rem 1rem;
   width: 100%;
 }
-#email:focus{
+#email:focus {
   outline: 5px yellow solid;
   outline-offset: 2px;
 }
-.subscription-form h3{
+.subscription-form h3 {
   font-weight: 900;
   margin-bottom: 2rem;
 }
-.consent{
+.consent {
   display: flex;
   gap: 2rem;
 }
@@ -534,11 +539,11 @@ font-weight: 900;
   padding: 0.5rem;
   border: solid 1px var(--var-text-color);
 }
-.consent-checkbox-container input{
+.consent-checkbox-container input {
   width: 1rem;
   height: 1rem;
 }
-.consent-checkbox-container label{
+.consent-checkbox-container label {
   width: max-content;
   font-size: 1.2rem;
 }
@@ -549,7 +554,7 @@ font-weight: 900;
   padding: 0 1rem;
   font-size: 10px;
 }
-button{
+button {
   all: unset;
   font-size: 1.2rem;
   font-weight: 900;
@@ -562,12 +567,12 @@ button{
   background-color: var(--var-text-color);
   margin: 15px 0;
 }
-button:hover{
+button:hover {
   background-color: yellow;
   cursor: pointer;
 }
 
-p a{
+p a {
   font-weight: 700;
   text-decoration: underline;
 }
