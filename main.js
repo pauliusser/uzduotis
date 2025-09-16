@@ -32,6 +32,8 @@ let isTabDP = false;
 const descriptionPNW = document.getElementById("description-pacific-nw");
 const descriptionDP = document.getElementById("description-dark-place");
 const scenePicture = document.getElementById("scene-picture");
+const header = document.getElementById("header-wrapper")
+
 
 
 
@@ -104,10 +106,25 @@ const setArrowsColor = () => {
 };
 setArrowsColor();
 
+let prevScrollYvalue = 0.0;
+let deltaScrollY = 0.0;
+
+
 window.addEventListener("scroll", () => {
   heroImage.style.transform = `translateY(${window.scrollY * 0.9}px)`;
   logoWrapper.style.transform = `translateY(${window.scrollY * 0.5}px)`;
   mainLogo.style.scale = `${1 + window.scrollY * -0.0005}`;
+  deltaScrollY = window.scrollY - prevScrollYvalue;
+  prevScrollYvalue = window.scrollY;
+  const isScrollingUp = deltaScrollY < 0 ;
+  const isHeader = isScrollingUp || window.scrollY < 200;
+  header.style.transform = `translateY(${isHeader?0:-67}px)`;
+
+  if (window.scrollY < 200) {    
+    header.style.backgroundColor = "rgb(32, 32, 32, 0)"
+  } else {
+    header.style.backgroundColor = "rgb(32, 32, 32, 1)"
+  }
 });
 
 const carouselHandler = () => {
