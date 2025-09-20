@@ -722,5 +722,6 @@ footer li {
 }
 .hr {
   border: none;
-  border-top: 1px solid #515854;
+  border-top: 1px solid #51585476;
+  margin-bottom: 1rem;
 }
