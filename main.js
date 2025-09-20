@@ -44,6 +44,8 @@ let isBurgerBtnActive = false;
 
 const burgerMenuHandler = () => {
   if (isBurgerBtnActive) {
+    burgerBtn.classList.add("bbtn-active");
+    burgerMenu.style.opacity = "1";
     document.body.style.overflow = "hidden"; //disble scrolling
     burgerMenu.style.top = "-0";
     logoHeader.style.filter = " brightness(0%)";
@@ -51,17 +53,23 @@ const burgerMenuHandler = () => {
     buyElement.style.display = "none";
     language.style.display = "none";
   } else {
+    burgerBtn.classList.remove("bbtn-active");
     document.body.style.overflow = "auto"; //enable scrolling
     burgerMenu.style.top = "-100vh";
     logoHeader.style.filter = " brightness(100%)";
     document.documentElement.style.setProperty("--var-header-color", "#97ac9f");
     buyElement.style.display = "flex";
     language.style.display = "flex";
+
+    setTimeout(() => {
+      burgerMenu.style.opacity = "0";
+    }, 300);
   }
 };
+burgerMenuHandler();
+
 burgerBtn.addEventListener("click", () => {
   isBurgerBtnActive = !isBurgerBtnActive;
-
   burgerMenuHandler();
 });
 
@@ -150,9 +158,9 @@ window.addEventListener("scroll", () => {
   }
 
   if (window.scrollY < 200) {
-    headerBar.style.backgroundColor = "rgb(32, 32, 32, 0)";
+    headerBar.style.backgroundColor = "var(--var-transparent)";
   } else {
-    headerBar.style.backgroundColor = "rgb(32, 32, 32, 1)";
+    headerBar.style.backgroundColor = "var(--var-col-dark-grey)";
   }
 });
 

@@ -1,10 +1,16 @@
 :root {
   --var-text-color: #97ac9f;
   --var-header-color: #97ac9f;
+  --var-active-yellow: #fffb7e;
+  --var-col-black: #000000;
+  --var-col-grey: #515854;
+  --var-col-dark-grey: #222222;
+  --var-transparent: #22222200;
+  --var-col-dark-green: #1b2421;
 }
 body {
   font-family: "aktiv-grotesk", sans-serif;
-  background-color: rgb(31, 31, 31);
+  background-color: var(--var-col-dark-grey);
   /* font-family: "aktiv-grotesk-thin",sans-serif; */
 }
 * {
@@ -15,9 +21,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
-p {
+/* p {
   line-height: 1.8rem;
-}
+} */
 /* 
 MARK:header
 */
@@ -29,7 +35,6 @@ header {
   z-index: 2;
 }
 .header-wrapper {
-  /* background-color: rgb(32, 32, 32, 1); */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +44,7 @@ header {
   position: absolute;
   top: 0;
   width: 100%;
-  color: black;
+  color: var(--var-col-black);
 }
 .header-bar {
   width: 100%;
@@ -47,7 +52,7 @@ header {
   transition: 0.3s;
 }
 .burger-menu {
-  background-color: #97ac9f;
+  background-color: var(--var-text-color);
   position: absolute;
   top: -100vh;
   left: 0;
@@ -82,17 +87,20 @@ header {
   font-size: 2rem;
   font-weight: 900;
 }
+.burger-menu nav ul li:hover a {
+  text-decoration: underline;
+}
 .visit-aw-remastered {
   display: block;
   font-size: 1.5rem;
   font-weight: 900;
-  border: 1px solid black;
+  border: 1px solid var(--var-col-black);
   padding: 5px 15px;
   transition: 0.1s;
 }
 .visit-aw-remastered:hover {
-  background-color: black;
-  color: #97ac9f;
+  background-color: var(--var-col-black);
+  color: var(--var-text-color);
 }
 .logo-and-buy {
   display: flex;
@@ -117,8 +125,8 @@ header {
   border: 1px solid var(--var-header-color);
 }
 .buy-element:hover {
-  color: yellow;
-  border: 1px solid yellow;
+  color: var(--var-active-yellow);
+  border: 1px solid var(--var-active-yellow);
   transition: 0.3s;
 }
 .language {
@@ -134,6 +142,7 @@ header {
   display: flex;
   align-items: center;
   gap: 50px;
+  position: relative;
 }
 .globe-icon circle,
 .globe-icon ellipse,
@@ -144,8 +153,8 @@ header {
 .language:hover .globe-icon ellipse,
 .language:hover .globe-icon line,
 .language:hover span {
-  stroke: yellow;
-  color: yellow;
+  stroke: var(--var-active-yellow);
+  color: var(--var-active-yellow);
   transition: 0.3s;
 }
 .language:hover .language-dropdown {
@@ -154,13 +163,28 @@ header {
 }
 .burger-btn line {
   stroke: var(--var-header-color);
+  transition: 0.1s;
 }
 .burger-btn:hover {
   cursor: pointer;
 }
 .burger-btn:hover line {
-  stroke: yellow;
-  transition: 0.3s;
+  stroke: var(--var-active-yellow);
+}
+.bbtn-active #line1 {
+  transform: translateY(8.5px) rotate(45deg);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.bbtn-active #line2 {
+  transform: scaleX(0);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.bbtn-active #line3 {
+  transform: translateY(-8.5px) rotate(-45deg);
+  transform-box: fill-box;
+  transform-origin: center;
 }
 .language-dropdown {
   display: none;
@@ -168,7 +192,7 @@ header {
   top: 37px;
   width: 130px;
   padding: 20px;
-  background-color: black;
+  background-color: var(--var-col-black);
 }
 .language-dropdown ul {
   list-style: none;
@@ -178,13 +202,15 @@ header {
   flex-direction: column;
   gap: 20px;
 }
+.language-dropdown a:hover {
+  color: var(--var-active-yellow);
+}
 
 /* 
 MARK:hero section
 */
 .hero-section {
   height: 100vh;
-  /* background-color: grey; */
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -192,7 +218,7 @@ MARK:hero section
 #hero-image {
   position: absolute;
   top: 0;
-  background-color: black;
+  background-color: var(--var-col-black);
   background-image: url("/images/Alan_Wake_2_keyart_for_web3-2560x1318.webp");
   background-size: cover;
   background-position: center;
@@ -220,7 +246,6 @@ MARK:hero section
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: aqua; */
 }
 
 #main-logo {
@@ -240,7 +265,7 @@ MARK:hero section
 }
 h1 {
   color: rgba(255, 255, 255, 0);
-  font-size: 1x;
+  font-size: 1px;
   position: fixed;
   top: -100px;
 }
@@ -249,9 +274,9 @@ MARK:slogan
 */
 .slogan-section {
   width: 100%;
-  background-color: black;
+  background-color: var(--var-col-black);
   color: var(--var-text-color);
-  padding: 75px 0;
+  padding: 75px 5%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -265,6 +290,7 @@ MARK:slogan
 .slogan-section p {
   font-size: 20px;
   font-weight: 700;
+  text-align: center;
 }
 .section-wrapper {
   width: 100%;
@@ -303,10 +329,10 @@ MARK:slogan
 }
 .play-btn-svg circle {
   fill: none;
-  stroke: yellow;
+  stroke: var(--var-active-yellow);
 }
 .play-btn-svg polygon {
-  fill: yellow;
+  fill: var(--var-active-yellow);
   transition: transform 0.3s;
 }
 .play-btn-svg:hover polygon {
@@ -317,12 +343,10 @@ MARK: description
 */
 .description-and-image-wrapper {
   color: var(--var-text-color);
-  background-color: black;
-  /* display: grid; */
+  background-color: var(--var-col-black);
   display: flex;
   justify-content: center;
   width: 100%;
-  /* grid-template-columns: 1fr 1fr; */
 }
 .description-centering-wrapper {
   display: flex;
@@ -330,7 +354,7 @@ MARK: description
   align-items: center;
 }
 .description-wrapper {
-  background-color: black;
+  background-color: var(--var-col-black);
   max-width: 700px;
   display: flex;
   flex-direction: column;
@@ -352,7 +376,7 @@ MARK: description
   justify-content: center;
   width: 200px;
   height: 50px;
-  color: black;
+  color: var(--var-col-black);
   background-color: var(--var-text-color);
   margin: 15px 0;
 }
@@ -433,7 +457,7 @@ MARK:carousel
 #carousel-indicator {
   width: 300px;
   height: 2px;
-  background-color: #515854;
+  background-color: var(--var-col-grey);
   align-self: center;
   cursor: pointer;
 }
@@ -452,7 +476,7 @@ MARK:descriptions
   display: grid;
   grid-template-columns: 1fr 1fr;
   color: var(--var-text-color);
-  background-color: black;
+  background-color: var(--var-col-black);
   justify-items: center;
 }
 .to-right {
@@ -498,13 +522,14 @@ MARK:descriptions
   background-image: url("./images/Dark_Place-2.jpg");
 }
 .tab-disabled {
-  color: #515854;
+  color: var(--var-col-grey);
   text-decoration: none;
 }
 /* 
 MARK:cards
 */
 .cards-wrapper {
+  background-color: var(--var-col-dark-green);
   color: var(--var-text-color);
   width: 100%;
   display: grid;
@@ -516,16 +541,36 @@ MARK:cards
 }
 .card {
   padding: 2rem;
-  background-size: cover;
-  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: end;
-  gap: 3rem;
+  gap: 2rem;
   max-width: 425px;
   height: 500px;
   overflow: hidden;
+  position: relative;
 }
+.c-bg-img {
+  background-color: aqua;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+.card:hover {
+  cursor: pointer;
+}
+.card:hover .c-bg-img {
+  transform: scale(1.1);
+}
+.card:hover p {
+  color: var(--var-active-yellow);
+}
+
 .c1 {
   background-image: url("./images/AWII_Launch_049.png");
 }
@@ -536,15 +581,18 @@ MARK:cards
   background-image: url("./images/AWII_Launch_16-10-23_036.png");
 }
 .card h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 900;
   line-height: 2.5rem;
+  line-height: 2rem;
   text-transform: capitalize;
+  z-index: 1;
 }
 .card p {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  line-height: 2rem;
+  z-index: 1;
+  transition: color 0.3s;
 }
 /* 
 MARK:contacts
@@ -553,13 +601,17 @@ MARK:contacts
   color: var(--var-text-color);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 100px 50px;
+  padding: 100px 40px;
   gap: 20px;
   background-image: url("./images/AlanWake2_DET_4K_020-1920x1080.webp");
   background-position: center;
   background-size: cover;
+  width: 100%;
 }
-
+.stay-connected {
+  justify-self: end;
+  max-width: 630px;
+}
 .stay-connected h2 {
   font-size: 3rem;
   font-weight: 900;
@@ -570,24 +622,43 @@ MARK:contacts
 }
 .subscription-form {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   flex-direction: column;
+  max-width: 630px;
 }
 .subscription-form a {
-  font-size: 1.2rem;
+  font-size: 1rem;
+}
+.subscription-form p {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  margin-top: 1rem;
+}
+.required-indicator {
+  color: var(--var-active-yellow);
+  font-weight: 900;
 }
 .subscription-form input {
   background-color: var(--var-text-color);
   padding: 1.5rem 1rem;
   width: 100%;
 }
+.label-email {
+  font-weight: 700;
+}
+input:user-invalid + .required-msg {
+  display: block;
+}
+.consent-checkbox-container:has(#consent:user-invalid) + .required-msg {
+  display: block;
+}
+
 #email:focus {
-  outline: 5px yellow solid;
+  outline: 5px var(--var-active-yellow) solid;
   outline-offset: 2px;
 }
 .subscription-form h3 {
   font-weight: 900;
-  margin-bottom: 2rem;
 }
 .consent {
   display: flex;
@@ -609,12 +680,13 @@ MARK:contacts
   width: max-content;
   font-size: 1.2rem;
 }
-.required-msg {
+.subscription-form .required-msg {
   background-color: rgb(128, 30, 0);
-  color: yellow;
+  color: var(--var-active-yellow);
   margin-top: 1rem;
   padding: 0 1rem;
-  font-size: 10px;
+  font-size: 0.7rem;
+  display: none;
 }
 button {
   all: unset;
@@ -625,28 +697,23 @@ button {
   justify-content: center;
   width: 200px;
   height: 50px;
-  color: black;
+  color: var(--var-col-black);
   background-color: var(--var-text-color);
   margin: 15px 0;
 }
 button:hover {
-  background-color: yellow;
+  background-color: var(--var-active-yellow);
   cursor: pointer;
 }
-
 p a {
   font-weight: 700;
   text-decoration: underline;
 }
-.hidden {
-  display: none;
-}
-
 /* 
 MARK:footer
 */
 footer {
-  background-color: black;
+  background-color: var(--var-col-black);
   display: flex;
   flex-direction: column;
   padding: 50px 20px;
@@ -664,15 +731,12 @@ footer li {
   width: 100%;
   justify-content: center;
 }
-
 .social-icons * {
-  fill: black;
-}
-.social-icons ul li {
+  fill: var(--var-col-black);
 }
 .social-icons ul li a {
   display: block;
-  background-color: #97ac9f;
+  background-color: var(--var-text-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -683,9 +747,8 @@ footer li {
 }
 .social-icons ul li a:hover {
   cursor: pointer;
-  background-color: yellow;
+  background-color: var(--var-active-yellow);
 }
-
 .links-icons ul {
   display: flex;
   width: 100%;
@@ -697,10 +760,21 @@ footer li {
   justify-content: center;
   align-items: center;
 }
+.links-icons ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
 .links-icons svg {
-  fill: #97ac9f;
+  fill: var(--var-text-color);
   width: 50%;
   height: auto;
+}
+.links-icons ul li svg:hover {
+  fill: var(--var-col-grey);
+  cursor: pointer;
 }
 .bottom {
   display: grid;
@@ -708,7 +782,7 @@ footer li {
   align-items: center;
 }
 .copyright {
-  color: #97ac9f;
+  color: var(--var-text-color);
 }
 .pegi {
   width: 50px;
@@ -718,10 +792,10 @@ footer li {
   text-decoration: none;
 }
 .copyright a:hover {
-  color: yellow;
+  color: var(--var-active-yellow);
 }
 .hr {
   border: none;
-  border-top: 1px solid #51585476;
+  border-top: 1px solid var(--var-col-grey) 76;
   margin-bottom: 1rem;
 }
