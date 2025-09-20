@@ -32,10 +32,38 @@ let isTabDP = false;
 const descriptionPNW = document.getElementById("description-pacific-nw");
 const descriptionDP = document.getElementById("description-dark-place");
 const scenePicture = document.getElementById("scene-picture");
-const header = document.getElementById("header-wrapper")
+const header = document.getElementById("header-wrapper");
+const headerBar = document.getElementById("header-bar");
+const burgerBtn = document.getElementById("burger-btn");
+const burgerMenu = document.getElementById("burger-menu");
+const logoHeader = document.getElementById("logo-header");
+const buyElement = document.getElementById("buy-element");
+const language = document.getElementById("language");
 
+let isBurgerBtnActive = false;
 
+const burgerMenuHandler = () => {
+  if (isBurgerBtnActive) {
+    document.body.style.overflow = "hidden"; //disble scrolling
+    burgerMenu.style.top = "-0";
+    logoHeader.style.filter = " brightness(0%)";
+    document.documentElement.style.setProperty("--var-header-color", "#000000ff");
+    buyElement.style.display = "none";
+    language.style.display = "none";
+  } else {
+    document.body.style.overflow = "auto"; //enable scrolling
+    burgerMenu.style.top = "-100vh";
+    logoHeader.style.filter = " brightness(100%)";
+    document.documentElement.style.setProperty("--var-header-color", "#97ac9f");
+    buyElement.style.display = "flex";
+    language.style.display = "flex";
+  }
+};
+burgerBtn.addEventListener("click", () => {
+  isBurgerBtnActive = !isBurgerBtnActive;
 
+  burgerMenuHandler();
+});
 
 const tabHandler = () => {
   isTabAW ? tabAlanWake.classList.remove("tab-disabled") : tabAlanWake.classList.add("tab-disabled");
@@ -43,54 +71,53 @@ const tabHandler = () => {
   isTabPNW ? tabPacificNW.classList.remove("tab-disabled") : tabPacificNW.classList.add("tab-disabled");
   isTabDP ? tabDarkPlace.classList.remove("tab-disabled") : tabDarkPlace.classList.add("tab-disabled");
 
-  if(isTabAW){
-    characterPicture.classList.add("alan-wake-background")
+  if (isTabAW) {
+    characterPicture.classList.add("alan-wake-background");
     characterPicture.classList.remove("saga-anderson-background");
-    descriptionSA.style.display = "none"
-    descriptionAW.style.display = "flex"
+    descriptionSA.style.display = "none";
+    descriptionAW.style.display = "flex";
   } else if (isTabSA) {
-    characterPicture.classList.add("saga-anderson-background")
+    characterPicture.classList.add("saga-anderson-background");
     characterPicture.classList.remove("alan-wake-background");
-    descriptionAW.style.display = "none"
-    descriptionSA.style.display = "flex"
+    descriptionAW.style.display = "none";
+    descriptionSA.style.display = "flex";
   }
 
-  if(isTabPNW){
-    scenePicture.classList.add("pacific-nw-background")
+  if (isTabPNW) {
+    scenePicture.classList.add("pacific-nw-background");
     scenePicture.classList.remove("dark-place-background");
-    descriptionPNW.style.display = "flex"
-    descriptionDP.style.display = "none"
+    descriptionPNW.style.display = "flex";
+    descriptionDP.style.display = "none";
   } else if (isTabDP) {
-    scenePicture.classList.add("dark-place-background")
+    scenePicture.classList.add("dark-place-background");
     scenePicture.classList.remove("pacific-nw-background");
-    descriptionDP.style.display = "flex"
-    descriptionPNW.style.display = "none"
+    descriptionDP.style.display = "flex";
+    descriptionPNW.style.display = "none";
   }
-  
-}
-tabHandler()
+};
+tabHandler();
 
-tabSagaAnderson.addEventListener("click",()=>{
-  console.log("click")
+tabSagaAnderson.addEventListener("click", () => {
+  console.log("click");
   isTabSA = true;
   isTabAW = false;
-  tabHandler()
-})
-tabAlanWake.addEventListener("click",()=>{
+  tabHandler();
+});
+tabAlanWake.addEventListener("click", () => {
   isTabAW = true;
   isTabSA = false;
-  tabHandler()
-})
-tabPacificNW.addEventListener("click",()=>{
+  tabHandler();
+});
+tabPacificNW.addEventListener("click", () => {
   isTabPNW = true;
   isTabDP = false;
-  tabHandler()
-})
-tabDarkPlace.addEventListener("click",()=>{
+  tabHandler();
+});
+tabDarkPlace.addEventListener("click", () => {
   isTabDP = true;
   isTabPNW = false;
-  tabHandler()
-})
+  tabHandler();
+});
 
 const setArrowsColor = () => {
   if (carouselPosition + itemsOnScreen >= totalItems) {
@@ -109,21 +136,23 @@ setArrowsColor();
 let prevScrollYvalue = 0.0;
 let deltaScrollY = 0.0;
 
-
 window.addEventListener("scroll", () => {
   heroImage.style.transform = `translateY(${window.scrollY * 0.9}px)`;
   logoWrapper.style.transform = `translateY(${window.scrollY * 0.5}px)`;
   mainLogo.style.scale = `${1 + window.scrollY * -0.0005}`;
   deltaScrollY = window.scrollY - prevScrollYvalue;
   prevScrollYvalue = window.scrollY;
-  const isScrollingUp = deltaScrollY < 0 ;
+  const isScrollingUp = deltaScrollY < 0;
   const isHeader = isScrollingUp || window.scrollY < 200;
-  header.style.transform = `translateY(${isHeader?0:-67}px)`;
+  if (!isBurgerBtnActive) {
+    header.style.transform = `translateY(${isHeader ? 0 : -67}px)`;
+    headerBar.style.transform = `translateY(${isHeader ? 0 : -67}px)`;
+  }
 
-  if (window.scrollY < 200) {    
-    header.style.backgroundColor = "rgb(32, 32, 32, 0)"
+  if (window.scrollY < 200) {
+    headerBar.style.backgroundColor = "rgb(32, 32, 32, 0)";
   } else {
-    header.style.backgroundColor = "rgb(32, 32, 32, 1)"
+    headerBar.style.backgroundColor = "rgb(32, 32, 32, 1)";
   }
 });
 
