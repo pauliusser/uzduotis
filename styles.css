@@ -543,15 +543,16 @@ MARK:descriptions
 MARK:cards
 */
 .cards-wrapper {
-  background-color: var(--var-col-dark-green);
   color: var(--var-text-color);
-  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: fit-content;
   justify-content: center;
   gap: 2rem;
   padding: 50px 2rem;
+}
+.green-bg {
+  background-color: var(--var-col-dark-green);
 }
 .card {
   padding: 2rem;
