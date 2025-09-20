@@ -36,11 +36,42 @@ const header = document.getElementById("header-wrapper");
 const headerBar = document.getElementById("header-bar");
 const burgerBtn = document.getElementById("burger-btn");
 const burgerMenu = document.getElementById("burger-menu");
+let isBurgerBtnActive = false;
 const logoHeader = document.getElementById("logo-header");
 const buyElement = document.getElementById("buy-element");
 const language = document.getElementById("language");
+const video = document.getElementById("video");
+const playBtn = document.getElementById("play-btn");
+const videoWalpaper = document.getElementById("video-walpaper");
+const videoSection = document.getElementById("video-section");
+let isVideoEnabled = false;
 
-let isBurgerBtnActive = false;
+const handleVideo = () => {
+  if (isVideoEnabled) {
+    videoSection.classList.add("hdtv-aspect-ratio");
+    videoSection.classList.remove("cinematic-aspect-ratio");
+    setTimeout(() => {
+      video.style.display = "block";
+      videoWalpaper.style.display = "none";
+      video.play();
+    }, 500);
+  } else {
+    videoWalpaper.style.display = "flex";
+    video.style.display = "none";
+    videoSection.classList.add("cinematic-aspect-ratio");
+    videoSection.classList.remove("hdtv-aspect-ratio");
+  }
+};
+handleVideo();
+
+playBtn.addEventListener("click", () => {
+  isVideoEnabled = true;
+  handleVideo();
+});
+video.addEventListener("ended", () => {
+  isVideoEnabled = false;
+  handleVideo();
+});
 
 const burgerMenuHandler = () => {
   if (isBurgerBtnActive) {

@@ -300,20 +300,34 @@ MARK:slogan
   justify-content: center;
   overflow: hidden;
 }
+/* 
+MARK:video
+*/
 .hdtv-aspect-ratio {
-  aspect-ratio: 16/9;
+  height: calc(100vw * 9 / 16);
+  transition: height 0.5s;
 }
 .cinematic-aspect-ratio {
-  aspect-ratio: 21/9;
+  height: calc(100vw * 9 / 21);
+  transition: height 0.5s;
 }
 .content-wrapper {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  background-color: var(--var-col-black);
 }
-.lake-house-image {
+.video {
   width: 100%;
+  height: auto;
+  max-height: 100vh;
+}
+.video-walpaper {
+  width: 100%;
+  height: 100%;
   background-image: url("/images/AW2_Lakehouse_DLC_trailer_thumbnail_4K-1920x1080.png");
   background-size: cover;
   background-position: center;
@@ -796,6 +810,6 @@ footer li {
 }
 .hr {
   border: none;
-  border-top: 1px solid var(--var-col-grey) 76;
+  border-top: 1px solid var(--var-col-dark-grey);
   margin-bottom: 1rem;
 }
