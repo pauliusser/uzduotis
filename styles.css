@@ -369,29 +369,12 @@ MARK:video
 /* 
 MARK: description
 */
-/* .description-and-image-wrapper {
-  color: var(--var-text-color);
-  background-color: var(--var-col-black);
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-height: 850px;
-} */
+
 .description-centering-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-/* .description-wrapper {
-  background-color: var(--var-col-black);
-  max-width: 700px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  gap: 30px;
-  align-items: flex-start;
-  padding: 65px 50px 65px 50px;
-} */
 .description-wrapper h2 {
   font-size: 2rem;
   font-weight: 900;
@@ -581,35 +564,33 @@ MARK:descriptions
 .description-wrapper {
   background-color: var(--var-col-black);
   max-width: 700px;
-
   justify-content: start;
-  gap: 30px;
+  gap: 20px;
   align-items: flex-start;
-
   display: flex;
   flex-direction: column;
-  padding: 100px 50px;
+  padding: 5% 10%;
 }
 .tabs-wrapper {
   display: flex;
-  gap: 50px;
+  gap: 20px;
 }
 .description {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 20px;
 }
 .character-picture {
   width: 100%;
   height: 100%;
-  min-height: calc(100vw * 9 / 16);
+  /* max-height: 850px; */
   background-size: cover;
   background-position: center;
 }
 #characters-info > :nth-child(1) {
   order: 1;
 }
-#characters-info > :nth-child(1) {
+#characters-info > :nth-child(2) {
   order: 2;
 }
 .alan-wake-background {
@@ -631,6 +612,7 @@ MARK:descriptions
   color: var(--var-col-grey);
   text-decoration: none;
 }
+
 /* 
 MARK:cards
 */
@@ -907,6 +889,13 @@ footer li {
   border-top: 1px solid var(--var-col-dark-grey);
   margin-bottom: 1rem;
 }
+
+.cd-description {
+  order: 1;
+}
+.cd-image {
+  order: 2;
+}
 /* 
 MARK:breakpoints
 */
@@ -916,11 +905,12 @@ MARK:breakpoints
   }
   .description-and-image-wrapper {
     grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr;
   }
   #characters-info > :nth-child(1) {
     order: 2;
   }
-  #characters-info > :nth-child(1) {
+  #characters-info > :nth-child(2) {
     order: 1;
   }
   .to-left {
@@ -971,6 +961,18 @@ MARK:breakpoints
   .subscription-form {
     max-width: 100%;
     justify-self: center;
+  }
+  .cd-description-image-wrapper {
+    grid-template-rows: auto auto;
+  }
+  .cd-description {
+    order: 2;
+  }
+  .cd-image {
+    order: 1;
+  }
+  .cd-image img {
+    padding: 0;
   }
 }
 @media screen and (width < 757px) {
