@@ -1,3 +1,4 @@
+const heroSection = document.getElementById("hero-section");
 const heroImage = document.getElementById("hero-image");
 const logoWrapper = document.getElementById("logo-wrapper");
 const mainLogo = document.getElementById("main-logo");
@@ -45,8 +46,60 @@ const playBtn = document.getElementById("play-btn");
 const videoWalpaper = document.getElementById("video-walpaper");
 const videoSection = document.getElementById("video-section");
 let isVideoEnabled = false;
+const modal = document.getElementById("modal");
+const modalImage = document.getElementById("modal-img");
+const modalExit = document.getElementById("modal-exit-btn");
+const modalLeft = document.getElementById("modal-left-arrow");
+const modalRight = document.getElementById("modal-right-arrow");
+let ismodalEnabled = false;
+const modalImageList = [
+  "/images/AWII_Launch_054.png",
+  "/images/AWII_Launch_049.png",
+  "/images/AWII_Launch_020.png",
+  "/images/AWII_Launch_16-10-23_036.png",
+  "/images/AWII_Launch_16-10-23_013.png",
+  "/images/AWII_Launch_009.png",
+];
+let modalImgIndex = 0;
 
-const handleVideo = () => {
+// MARK: functions
+
+const scrolling = (bool) => {
+  if (typeof bool === "boolean") {
+    document.body.style.overflow = bool ? "auto" : "hidden";
+  } else {
+    console.error("bad argument for scrolling()");
+  }
+};
+
+const isElementVisible = (el) => {
+  // returns bool if element Y is visible on screen
+  const rect = el.getBoundingClientRect();
+  // console.log(`top: ${rect.top},  bottom: ${rect.bottom}, window heitght: ${window.innerHeight}`);
+  // console.log(rect.top < window.innerHeight && rect.bottom > 0);
+  return rect.top < window.innerHeight && rect.bottom > 0;
+};
+
+// MARK: handlers
+
+const modalHandler = (index) => {
+  if (ismodalEnabled) {
+    if (index >= modalImageList.length) return;
+    if (index < 0) return;
+    modalRight.style.display = index == modalImageList.length - 1 ? "none" : "block";
+    modalLeft.style.display = index == 0 ? "none" : "block";
+    modalImgIndex = index;
+    modal.style.display = "flex";
+    modalImage.src = modalImageList[index];
+    scrolling(false);
+  } else {
+    modal.style.display = "none";
+    scrolling(true);
+  }
+};
+modalHandler();
+
+const videoHandler = () => {
   if (isVideoEnabled) {
     videoSection.classList.add("hdtv-aspect-ratio");
     videoSection.classList.remove("cinematic-aspect-ratio");
@@ -56,28 +109,20 @@ const handleVideo = () => {
       video.play();
     }, 500);
   } else {
+    if (document.fullscreenElement === video) document.exitFullscreen();
     videoWalpaper.style.display = "flex";
     video.style.display = "none";
     videoSection.classList.add("cinematic-aspect-ratio");
     videoSection.classList.remove("hdtv-aspect-ratio");
   }
 };
-handleVideo();
-
-playBtn.addEventListener("click", () => {
-  isVideoEnabled = true;
-  handleVideo();
-});
-video.addEventListener("ended", () => {
-  isVideoEnabled = false;
-  handleVideo();
-});
+videoHandler();
 
 const burgerMenuHandler = () => {
   if (isBurgerBtnActive) {
     burgerBtn.classList.add("bbtn-active");
     burgerMenu.style.opacity = "1";
-    document.body.style.overflow = "hidden"; //disble scrolling
+    scrolling(false);
     burgerMenu.style.top = "-0";
     logoHeader.style.filter = " brightness(0%)";
     document.documentElement.style.setProperty("--var-header-color", "#000000ff");
@@ -85,7 +130,7 @@ const burgerMenuHandler = () => {
     language.style.display = "none";
   } else {
     burgerBtn.classList.remove("bbtn-active");
-    document.body.style.overflow = "auto"; //enable scrolling
+    scrolling(true);
     burgerMenu.style.top = "-100vh";
     logoHeader.style.filter = " brightness(100%)";
     document.documentElement.style.setProperty("--var-header-color", "#97ac9f");
@@ -98,11 +143,6 @@ const burgerMenuHandler = () => {
   }
 };
 burgerMenuHandler();
-
-burgerBtn.addEventListener("click", () => {
-  isBurgerBtnActive = !isBurgerBtnActive;
-  burgerMenuHandler();
-});
 
 const tabHandler = () => {
   isTabAW ? tabAlanWake.classList.remove("tab-disabled") : tabAlanWake.classList.add("tab-disabled");
@@ -136,28 +176,6 @@ const tabHandler = () => {
 };
 tabHandler();
 
-tabSagaAnderson.addEventListener("click", () => {
-  console.log("click");
-  isTabSA = true;
-  isTabAW = false;
-  tabHandler();
-});
-tabAlanWake.addEventListener("click", () => {
-  isTabAW = true;
-  isTabSA = false;
-  tabHandler();
-});
-tabPacificNW.addEventListener("click", () => {
-  isTabPNW = true;
-  isTabDP = false;
-  tabHandler();
-});
-tabDarkPlace.addEventListener("click", () => {
-  isTabDP = true;
-  isTabPNW = false;
-  tabHandler();
-});
-
 const setArrowsColor = () => {
   if (carouselPosition + itemsOnScreen >= totalItems) {
     carouselRightArrow.style.color = "#515854";
@@ -172,14 +190,17 @@ const setArrowsColor = () => {
 };
 setArrowsColor();
 
-let prevScrollYvalue = 0.0;
-let deltaScrollY = 0.0;
+const heroSectionHandler = () => {
+  if (isElementVisible(heroSection)) {
+    heroImage.style.transform = `translateY(${window.scrollY * 0.9}px)`;
+    logoWrapper.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+    mainLogo.style.scale = `${1 + window.scrollY * -0.0005}`;
+  }
+};
 
-window.addEventListener("scroll", () => {
-  heroImage.style.transform = `translateY(${window.scrollY * 0.9}px)`;
-  logoWrapper.style.transform = `translateY(${window.scrollY * 0.5}px)`;
-  mainLogo.style.scale = `${1 + window.scrollY * -0.0005}`;
-  deltaScrollY = window.scrollY - prevScrollYvalue;
+let prevScrollYvalue = 0.0;
+const headerBarHandler = () => {
+  const deltaScrollY = window.scrollY - prevScrollYvalue;
   prevScrollYvalue = window.scrollY;
   const isScrollingUp = deltaScrollY < 0;
   const isHeader = isScrollingUp || window.scrollY < 200;
@@ -187,13 +208,17 @@ window.addEventListener("scroll", () => {
     header.style.transform = `translateY(${isHeader ? 0 : -67}px)`;
     headerBar.style.transform = `translateY(${isHeader ? 0 : -67}px)`;
   }
-
   if (window.scrollY < 200) {
     headerBar.style.backgroundColor = "var(--var-transparent)";
   } else {
     headerBar.style.backgroundColor = "var(--var-col-dark-grey)";
   }
-});
+};
+
+const scrollHandler = () => {
+  heroSectionHandler();
+  headerBarHandler();
+};
 
 const carouselHandler = () => {
   if (carouselPosition + itemsOnScreen > totalItems) {
@@ -221,6 +246,8 @@ const resizeHandler = () => {
 };
 resizeHandler();
 
+// MARK:Events
+
 carouselRightArrow.addEventListener("click", () => {
   if (carouselPosition + itemsOnScreen < totalItems) {
     carouselPosition += itemsOnScreen;
@@ -245,4 +272,59 @@ window.addEventListener("resize", () => {
   resizeHandler();
   carouselHandler();
   carouselIndicatorSlider.style.width = `${(itemsOnScreen / totalItems) * 100}%`;
+});
+
+window.addEventListener("scroll", () => {
+  scrollHandler();
+});
+modalExit.addEventListener("click", () => {
+  ismodalEnabled = false;
+  modalHandler();
+});
+modalLeft.addEventListener("click", () => {
+  modalHandler(modalImgIndex - 1);
+});
+modalRight.addEventListener("click", () => {
+  modalHandler(modalImgIndex + 1);
+});
+
+carouselItems.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    ismodalEnabled = true;
+    modalImgIndex = index;
+    modalHandler(index);
+  });
+});
+playBtn.addEventListener("click", () => {
+  isVideoEnabled = true;
+  videoHandler();
+});
+video.addEventListener("ended", () => {
+  isVideoEnabled = false;
+  videoHandler();
+});
+tabSagaAnderson.addEventListener("click", () => {
+  console.log("click");
+  isTabSA = true;
+  isTabAW = false;
+  tabHandler();
+});
+tabAlanWake.addEventListener("click", () => {
+  isTabAW = true;
+  isTabSA = false;
+  tabHandler();
+});
+tabPacificNW.addEventListener("click", () => {
+  isTabPNW = true;
+  isTabDP = false;
+  tabHandler();
+});
+tabDarkPlace.addEventListener("click", () => {
+  isTabDP = true;
+  isTabPNW = false;
+  tabHandler();
+});
+burgerBtn.addEventListener("click", () => {
+  isBurgerBtnActive = !isBurgerBtnActive;
+  burgerMenuHandler();
 });
